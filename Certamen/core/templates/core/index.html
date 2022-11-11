@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Comunidad</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+
+</head>
+
+{% extends "core/base.html" %}
+{% load static %}
+{%block content%}
+<body>
+
+
+
+    <div class="container">   
+        <div class="panel-body">
+
+            <table id="example" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Conserje
+                        <th>Remitente</th>
+                        <th>Destinatario</th>
+                        <th>nro_residencia</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for post in posts %}
+                    <tr>
+                        <td>{{post.fecha_recepcion}}</td>
+                        <td>{{post.conserje}}</td>
+                        <td>{{post.remitente}}</td>
+                        <td>{{post.destinatario}}</td>
+                        <td>{{post.nro_residencia.numero}}</td>
+                        <td>{{post.estado}}</td>
+        
+                    </tr>
+                    {% endfor %}
+        
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Conserje
+                        <th>Remitente</th>
+                        <th>Destinatario</th>
+                        <th>nro_residencia</th>
+                        <th>Estado</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+      </div> 
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/plug-ins/1.13.1/i18n/es-ES.json"></script>
+    
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable({
+            scrollY: '50vh',
+            scrollCollapse: true,
+            paging: true,
+            resposive: true,
+            lengthMenu: [
+            [2, 4, 6, -1],
+            [2, 4, 6, 'All'],
+           ],
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ registros por página",
+                "zeroRecords": "No se encontraron resultados en su búsqueda",
+                "searchPlaceholder": "Buscar registros",
+                "info": "Mostrando registros de _START_ al _END_ de un total de  _TOTAL_ registros",
+                "infoEmpty": "No existen registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "search": "Buscar por residencia:",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                },
+            }
+        });
+    }); </script>
+
+    {% endblock %}
+     
+    
+</body>
+
+</html>

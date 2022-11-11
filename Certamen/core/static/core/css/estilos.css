@@ -1,0 +1,5 @@
+#bg{
+    background-repeat: no-repeat;
+    background-image; url('{% static 'core/img/01-min.png'%}');"
+
+}
